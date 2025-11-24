@@ -19,15 +19,18 @@ If you need to be able to create exfat partitions, you need to install exfatprog
 - Defaults to exfat if available (falling back to vfat, ext4, etc.), since it's writable with no extra permissions and supports large files.
 
 ## Build dependencies
-FLTK build deps:
-- libx11-dev
-- libxext-dev
-- libxft-dev
-- libxinerama-dev
-- libxcursor-dev
-- libxrender-dev
-- libxfixes-dev
-- libpango1.0-dev (will install libcairo devel as well)
+- Rust
+- A C++17 compiler
+- CMake + (make or ninja)
+- FLTK build deps:
+  - libx11-dev
+  - libxext-dev
+  - libxft-dev
+  - libxinerama-dev
+  - libxcursor-dev
+  - libxrender-dev
+  - libxfixes-dev
+  - libpango1.0-dev (will install libcairo devel as well)
 
 ## Runtime dependencies
 - Udisks2 system service.

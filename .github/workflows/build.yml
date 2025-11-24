@@ -17,6 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install deps
-      run: sudo apt-get update && sudo apt-get install libfltk1.4-dev
+      run: sudo apt-get update && sudo apt-get install libx11-dev libxext-dev libxft-dev libxinerama-dev libxcursor-dev libxrender-dev libxfixes-dev libpango1.0-dev
     - name: Build
-      run: cargo build --verbose --features=fltk/fltk-config
+      run: cargo build --verbose --features=fltk/fltk-bundled
