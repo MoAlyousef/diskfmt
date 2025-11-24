@@ -1,0 +1,35 @@
+[package]
+name = "diskfmt"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "A GUI utility for formatting disks using UDisks2."
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/MoAlyousef/diskfmt"
+keywords = ["udisks", "udisks2", "manipulating-disk", "storage"]
+categories = ["api-bindings", "hardware-support", "os::linux-apis"]
+exclude = ["/screenshots/*"]
+
+[dependencies]
+anyhow = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
+async-trait = "0.1"
+futures-util = "0.3"
+fudisks = "0.1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+crossbeam-channel = "0.5.15"
+fltk = { version = "1", optional = true }
+fltk-theme = { version = "0.7", optional = true }
+fltk-accesskit = { version = "0.2", optional = true }
+
+[features]
+default = ["gui"]
+a11y = ["gui", "dep:fltk-accesskit"]
+gui = ["dep:fltk", "dep:fltk-theme"]
+
+[profile.release]
+lto = true
+strip = true
