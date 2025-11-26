@@ -8,6 +8,7 @@ use fltk::{
     enums::{Align, Event},
     frame::Frame,
     group::Flex,
+    image::PngImage,
     input::Input,
     menu::Choice,
     misc::Progress,
@@ -17,6 +18,8 @@ use fltk::{
 #[cfg(feature = "a11y")]
 use fltk_accesskit::{builder, update_focused};
 use std::{cell::RefCell, rc::Rc};
+
+const ICON: &[u8] = include_bytes!("../../assets/icon16x16.png");
 
 const TOOLTIP_DEVICE_CHOICE: &str = concat!(
     "Select the target block device or partition to format. ",
@@ -74,6 +77,7 @@ impl View {
     ) -> Self {
         let mut win = Window::default().with_size(400, 500).with_label("diskfmt");
         win.set_xclass("diskfmt");
+        win.set_icon(Some(PngImage::from_data(ICON).unwrap()));
         let mut col = Flex::default_fill().column();
         col.set_margins(10, 5, 10, 5);
         col.set_pad(5);

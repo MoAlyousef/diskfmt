@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=diskfmt
+Comment=A GUI utility for formatting disks using UDisks2
+Exec=diskfmt
+Icon=diskfmt
+Categories=Utility;System;
+Terminal=false

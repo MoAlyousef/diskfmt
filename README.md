@@ -1,3 +1,5 @@
+![diskfmt icon](assets/icon256x256.jpg)
+
 # diskfmt
 A disk formatting utility for linux that is similar to the windows format utility.
 Currently it uses the UDisks2 system service (via the `udisks2` crate) for the heavy lifting. Other backends can be conceptually added later.
@@ -60,6 +62,16 @@ Feature flags:
 - Default build enables the GUI.
 - CLI-only build: `cargo build --release --no-default-features`.
 - Accessibility: `cargo build --release --features a11y` (requires GUI feature).
+
+### AppImage
+- The helper script `scripts/build-appimage.sh` builds a release binary, sets up an AppDir, and bundles it with `linuxdeploy` + `appimagetool` (downloaded into `target/appimage/` if missing).
+- Requires `convert` from ImageMagick to downscale the provided `icon.png` (1024x1024) to 256x256 for the AppImage icon.
+- Example:
+  ```bash
+  ./scripts/build-appimage.sh          # produces target/appimage/diskfmt-<version>-<arch>.AppImage
+  ```
+- Environment knobs: `ARCH` (defaults to uname -m), `CARGO_FLAGS` (e.g., `--features fltk/use-wayland`), `LINUXDEPLOY`/`APPIMAGETOOL` (custom paths), `ICON_SRC`, `OUTPUT`, `VERSION`.
+- The AppImage still expects UDisks2/Polkit on the host; those services are not bundled.
 
 ## CLI Usage
 

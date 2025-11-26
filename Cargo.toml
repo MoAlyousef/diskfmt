@@ -1,6 +1,6 @@
 [package]
 name = "diskfmt"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 rust-version = "1.85"
 description = "A GUI utility for formatting disks using UDisks2."
@@ -33,3 +33,8 @@ gui = ["dep:fltk", "dep:fltk-theme"]
 [profile.release]
 lto = true
 strip = true
+
+[package.metadata.appimage]
+icon = "assets/icon256x256.png"
+desktop_entry = "appimage/diskfmt.desktop"
+categories = ["Utility;System;"]
