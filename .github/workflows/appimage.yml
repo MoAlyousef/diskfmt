@@ -40,7 +40,7 @@ jobs:
           toolchain: 1.85.0
 
       - name: Build release binary
-        run: cargo build --release --features=fltk/fltk-bundled
+        run: cargo build --release
 
       - name: Build AppImage
         env:
