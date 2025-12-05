@@ -77,7 +77,10 @@ install -Dm644 "$DESKTOP_FILE" "$APPDIR/usr/share/applications/diskfmt.desktop"
 
 DESKTOP_TARGET="$APPDIR/usr/share/applications/diskfmt.desktop"
 if ! grep -q "^X-AppImage-Version=" "$DESKTOP_TARGET"; then
-  echo "X-AppImage-Version=$VERSION" >> "$DESKTOP_TARGET"
+  if [ -s "$DESKTOP_TARGET" ] && [ "$(tail -c1 "$DESKTOP_TARGET" | wc -l)" -eq 0 ]; then
+    printf '\n' >> "$DESKTOP_TARGET"
+  fi
+  printf 'X-AppImage-Version=%s\n' "$VERSION" >> "$DESKTOP_TARGET"
 fi
 ln -sf usr/share/applications/diskfmt.desktop "$APPDIR/diskfmt.desktop"
 
