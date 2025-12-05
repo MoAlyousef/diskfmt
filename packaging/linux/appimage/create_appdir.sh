@@ -10,7 +10,7 @@ BIN="$BUILD_DIR/release/diskfmt"
 DESKTOP_FILE="$SCRIPT_DIR/diskfmt.desktop"
 ICON_SRC="${ICON_SRC:-$ROOT_DIR/assets/icon.png}"
 ARCH="${ARCH:-$(uname -m)}"
-VERSION="${VERSION:-$(grep -m1 '^version' "$ROOT_DIR/Cargo.toml" | cut -d '\"' -f2)}"
+VERSION="${VERSION:-$(awk -F '\"' '/^version[[:space:]]*=/{print $2; exit}' "$ROOT_DIR/Cargo.toml")}"
 METADATA_FILE="$ROOT_DIR/packaging/linux/diskfmt.metainfo.xml"
 LINUXDEPLOY="${LINUXDEPLOY:-$APPIMAGE_DIR/linuxdeploy-${ARCH}.AppImage}"
 APPIMAGETOOL="${APPIMAGETOOL:-$APPIMAGE_DIR/appimagetool-${ARCH}.AppImage}"
@@ -77,7 +77,10 @@ install -Dm644 "$DESKTOP_FILE" "$APPDIR/usr/share/applications/diskfmt.desktop"
 
 DESKTOP_TARGET="$APPDIR/usr/share/applications/diskfmt.desktop"
 if ! grep -q "^X-AppImage-Version=" "$DESKTOP_TARGET"; then
-  echo "X-AppImage-Version=$VERSION" >> "$DESKTOP_TARGET"
+  if [ -s "$DESKTOP_TARGET" ] && [ "$(tail -c1 "$DESKTOP_TARGET" | wc -l)" -eq 0 ]; then
+    printf '\n' >> "$DESKTOP_TARGET"
+  fi
+  printf 'X-AppImage-Version=%s\n' "$VERSION" >> "$DESKTOP_TARGET"
 fi
 ln -sf usr/share/applications/diskfmt.desktop "$APPDIR/diskfmt.desktop"
 
