@@ -2,7 +2,7 @@
 name = "diskfmt"
 version = "0.1.3"
 edition = "2024"
-rust-version = "1.85"
+rust-version = "1.90"
 description = "A GUI utility for formatting disks using UDisks2."
 readme = "README.md"
 license = "MIT"
