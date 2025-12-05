@@ -37,10 +37,10 @@ jobs:
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.85.0
+          toolchain: 1.90.0
 
       - name: Build release binary
-        run: cargo build --release --features=fltk/fltk-bundled
+        run: cargo build --release
 
       - name: Build AppImage
         env:

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>diskfmt</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">diskfmt</h1>
+        <p>A disk formatting utility for Linux that feels like the Windows format dialog, built on top of the UDisks2 system service.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>What it does</h2>
+            <ul>
+                <li>Small, easy defaults aimed at people coming from Windows.</li>
+                <li>Filters out non-removable devices to avoid accidents.</li>
+                <li>Defaults to GPT tables (you can switch to MBR in the UI).</li>
+                <li>Creates a partition before formatting and prefers exFAT when available.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Download</h2>
+            <p>Grab the AppImage build (requires UDisks2/Polkit on the host):</p>
+            <p style="text-align: center;">
+                <button type="button" onclick="window.location.href='https://github.com/MoAlyousef/diskfmt/releases/download/v0.1.3/diskfmt-0.1.3-x86_64.AppImage'">
+                    Download diskfmt AppImage
+                </button>
+            </p>
+        </section>
+
+        <section>
+            <h2>Screenshot</h2>
+            <p style="text-align: center;">
+                <img src="https://raw.githubusercontent.com/MoAlyousef/diskfmt/main/screenshots/diskfmt.png" alt="diskfmt application window" style="max-width: 100%; height: auto;">
+            </p>
+        </section>
+
+        <section>
+            <h2>How to use it</h2>
+            <p>Start the GUI with no arguments or with <code>--start-ui</code>. Common CLI flows:</p>
+            <ul>
+                <li>List removable devices: <code>diskfmt list</code></li>
+                <li>Format a device: <code>diskfmt format --path /dev/sdb1 --fs vfat --label USB --quick</code></li>
+                <li>Pick a filesystem block size or table type with <code>--size</code> and <code>--table</code>.</li>
+            </ul>
+            <p>Install <code>exfatprogs</code> if you need exFAT support on your distribution.</p>
+        </section>
+
+        <section>
+            <h2>Building</h2>
+            <p>Requires Rust, a C++17 compiler, and common FLTK/X11 build dependencies (libx11-dev, libxft-dev, libxrender-dev, etc.). Build a release binary with:</p>
+            <pre><code>cargo build --release</code></pre>
+            <p>Use <code>--features fltk/use-wayland</code> to build with hybrid/X11 support or <code>--no-default-features</code> for a CLI-only build.</p>
+        </section>
+    </main>
+</body>
+</html>
