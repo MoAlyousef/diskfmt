@@ -1,4 +1,4 @@
-![diskfmt icon](assets/icon256x256.jpg)
+![diskfmt icon](assets/icon_256x256.png)
 
 # diskfmt
 A disk formatting utility for linux that is similar to the windows format utility.
@@ -9,7 +9,7 @@ Small, good defaults and easy to use, especially for users coming from windows t
 
 ## Screenshot
 
-![diskfmt screenshot](screenshots/diskfmt.jpg)
+![diskfmt screenshot](screenshots/diskfmt.png)
 
 ## Notes
 If you need to be able to create exfat partitions, you need to install exfatprogs package on your distribution if not already available.

@@ -19,7 +19,7 @@ use fltk::{
 use fltk_accesskit::{builder, update_focused};
 use std::{cell::RefCell, rc::Rc};
 
-const ICON: &[u8] = include_bytes!("../../assets/icon16x16.png");
+const ICON: &[u8] = include_bytes!("../../assets/icon_16x16.png");
 
 const TOOLTIP_DEVICE_CHOICE: &str = concat!(
     "Select the target block device or partition to format. ",
