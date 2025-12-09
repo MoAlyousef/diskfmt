@@ -45,7 +45,7 @@ jobs:
       - name: Build AppImage
         env:
           APPIMAGE_EXTRACT_AND_RUN: "1"
-        run: bash packaging/linux/appimage/create_appdir.sh
+        run: ./packaging/linux/appimage/create_appimage.py
 
       - name: Upload AppImage artifact
         uses: actions/upload-artifact@v4
